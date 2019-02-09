@@ -1,3 +1,6 @@
+from collections import deque
+
+
 def get_component(graph: dict, start_vertex) -> set:
     '''
     :param graph: dict
@@ -6,10 +9,10 @@ def get_component(graph: dict, start_vertex) -> set:
     '''
 
     component = {start_vertex}
-    queue = [start_vertex]
+    queue = deque(start_vertex)
 
     while queue:
-        current = queue.pop(0)
+        current = queue.popleft()
 
         for neighbor in graph[current]:
             if neighbor in component:
